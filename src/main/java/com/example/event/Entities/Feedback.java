@@ -15,8 +15,10 @@ public class Feedback {
     int rating;
     String comment;
 
+    /********************************************/
     @ManyToOne
     Event event;
+    /********************************************/
 
     public long getIdFeed() {
         return idFeed;

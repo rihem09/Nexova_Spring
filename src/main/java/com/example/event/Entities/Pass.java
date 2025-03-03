@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDate;
+
 import java.util.Date;
 
 @Entity
@@ -14,12 +16,15 @@ public class Pass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long idPass;
-
     String price;
-    Date validFrom;
+    LocalDate validFrom = LocalDate.now();
     Date validUntil;
+
     @Enumerated(EnumType.STRING)
     private PassType type;
+
+
+
 
     public long getIdPass() {
         return idPass;
@@ -37,11 +42,11 @@ public class Pass {
         this.price = price;
     }
 
-    public Date getValidFrom() {
+    public LocalDate getValidFrom() {
         return validFrom;
     }
 
-    public void setValidFrom(Date validFrom) {
+    public void setValidFrom(LocalDate validFrom) {
         this.validFrom = validFrom;
     }
 

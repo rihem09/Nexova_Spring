@@ -3,8 +3,10 @@ package com.example.event.Entities;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -21,11 +23,12 @@ public class Event {
     String duration;
     String venue;
 
-    @ManyToOne
-    Pass pass;
+    @Enumerated(EnumType.STRING)
+    private EventPass eventp;
+/*********************************************/
     @OneToMany(mappedBy = "event")
     List<Feedback> feedbacks;
-
+/********************************************/
     public long getIdEvent() {
         return idEvent;
     }
@@ -74,16 +77,17 @@ public class Event {
         this.venue = venue;
     }
 
-    public Pass getPass() {
-        return pass;
-    }
-
-    public void setPass(Pass pass) {
-        this.pass = pass;
-    }
 
     public List<Feedback> getFeedbacks() {
         return feedbacks;
+    }
+
+    public EventPass getEventp() {
+        return eventp;
+    }
+
+    public void setEventp(EventPass eventp) {
+        this.eventp = eventp;
     }
 
     public void setFeedbacks(List<Feedback> feedbacks) {
