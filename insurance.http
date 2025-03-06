@@ -1,0 +1,128 @@
+### Create a new insurance
+POST http://localhost:8020/user/api/insurance
+Content-Type: application/json
+
+{
+  "homeArea": 120.5,
+  "numberOfRooms": 4,
+  "homeType": "APARTMENT",
+  "yearOfConstruction": 2015,
+  "fullAddress": "123 Main Street, Apt 4B, City",
+  "occupancyType": "PRIMARY_RESIDENCE",
+  "insuredFurnitureValue": 50000.00,
+  "alarmSystem": true,
+  "insuranceType": "PARTICULAR",
+  "antiTheftProtection": true,
+  "glassProtection": true,
+  "waterDamageProtection": true,
+  "fireExplosionProtection": true,
+  "naturalDisasterProtection": true,
+  "civilLiabilityProtection": true,
+  "emergencyAssistance": true,
+  "newValueProtection": false,
+  "electricalDamageProtection": true
+}
+
+### Get all insurances
+GET http://localhost:8020/user/api/insurance
+
+### Get insurance by ID
+GET http://localhost:8020/user/api/insurance/1
+
+### Update insurance
+PUT http://localhost:8020/user/api/insurance/1
+Content-Type: application/json
+
+{
+  "homeArea": 150.0,
+  "numberOfRooms": 5,
+  "homeType": "APARTMENT",
+  "yearOfConstruction": 2015,
+  "fullAddress": "123 Main Street, Apt 4B, City",
+  "occupancyType": "PRIMARY_RESIDENCE",
+  "insuredFurnitureValue": 75000.00,
+  "alarmSystem": true,
+  "insuranceType": "PARTICULAR",
+  "antiTheftProtection": true,
+  "glassProtection": true,
+  "waterDamageProtection": true,
+  "fireExplosionProtection": true,
+  "naturalDisasterProtection": true,
+  "civilLiabilityProtection": true,
+  "emergencyAssistance": true,
+  "newValueProtection": true,
+  "electricalDamageProtection": true
+}
+
+### Delete insurance
+DELETE http://localhost:8020/user/api/insurance/1
+
+### Search by home type
+GET http://localhost:8020/user/api/insurance/search?homeType=APARTMENT
+
+### Search by year of construction
+GET http://localhost:8020/user/api/insurance/search?yearOfConstruction=2015
+
+### Search by alarm system
+GET http://localhost:8020/user/api/insurance/search?alarmSystem=true
+
+### Search with multiple parameters
+GET http://localhost:8020/user/api/insurance/search?homeType=APARTMENT&yearOfConstruction=2015&alarmSystem=true
+
+### Create payment intent
+POST http://localhost:8020/user/api/insurance/1/payment
+Content-Type: application/json
+
+### Confirm payment
+POST http://localhost:8020/user/api/insurance/1/payment/confirm
+Content-Type: application/json
+
+### Secondary residence insurance example
+POST http://localhost:8020/user/api/insurance
+Content-Type: application/json
+
+{
+  "homeArea": 85.0,
+  "numberOfRooms": 3,
+  "homeType": "VILLA",
+  "yearOfConstruction": 2018,
+  "fullAddress": "456 Beach Road, Coast City",
+  "occupancyType": "SECONDARY_RESIDENCE",
+  "insuredFurnitureValue": 35000.00,
+  "alarmSystem": true,
+  "insuranceType": "PARTICULAR",
+  "antiTheftProtection": true,
+  "glassProtection": true,
+  "waterDamageProtection": true,
+  "fireExplosionProtection": true,
+  "naturalDisasterProtection": true,
+  "civilLiabilityProtection": false,
+  "emergencyAssistance": true,
+  "newValueProtection": false,
+  "electricalDamageProtection": true
+}
+
+### Rental property insurance example
+POST http://localhost:8020/user/api/insurance
+Content-Type: application/json
+
+{
+  "homeArea": 65.0,
+  "numberOfRooms": 2,
+  "homeType": "STUDIO",
+  "yearOfConstruction": 2020,
+  "fullAddress": "789 City Center, Unit 12, Metro City",
+  "occupancyType": "RENTAL",
+  "insuredFurnitureValue": 25000.00,
+  "alarmSystem": false,
+  "insuranceType": "PROFESSIONAL",
+  "antiTheftProtection": true,
+  "glassProtection": true,
+  "waterDamageProtection": true,
+  "fireExplosionProtection": true,
+  "naturalDisasterProtection": false,
+  "civilLiabilityProtection": true,
+  "emergencyAssistance": true,
+  "newValueProtection": false,
+  "electricalDamageProtection": false
+}

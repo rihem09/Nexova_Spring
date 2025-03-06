@@ -1,0 +1,74 @@
+### Create a new car insurance
+POST http://localhost:8020/user/api/carinsurance
+Content-Type: application/json
+
+{
+  "make": "Toyota",
+  "model": "Camry",
+  "year": 2020,
+  "power": 180,
+  "fuelType": "PETROL",
+  "coverages": {
+    "ANTI_THEFT": true,
+    "GLASS_AND_WINDOW": true,
+    "WATER_DAMAGE": false,
+    "FIRE_AND_EXPLOSION": true,
+    "NATURAL_DISASTERS": false,
+    "TENANT_LIABILITY": false,
+    "ASSISTANCE_24_7": true,
+    "NEW_FOR_OLD": false,
+    "ELECTRICAL_DAMAGE": true
+  }
+}
+
+### Get all car insurances
+GET http://localhost:8020/user/api/carinsurance
+
+### Get car insurance by ID
+GET http://localhost:8020/user/api/carinsurance/1
+
+### Update car insurance
+PUT http://localhost:8020/user/api/carinsurance/1
+Content-Type: application/json
+
+{
+  "make": "Toyotaa",
+  "model": "Camry",
+  "year": 2020,
+  "power": 200,
+  "fuelType": "HYBRID",
+  "coverages": {
+    "ANTI_THEFT": true,
+    "GLASS_AND_WINDOW": true,
+    "WATER_DAMAGE": true,
+    "FIRE_AND_EXPLOSION": true,
+    "NATURAL_DISASTERS": true,
+    "TENANT_LIABILITY": false,
+    "ASSISTANCE_24_7": true,
+    "NEW_FOR_OLD": true,
+    "ELECTRICAL_DAMAGE": true
+  }
+}
+
+### Delete car insurance
+DELETE http://localhost:8020/user/api/carinsurance/1
+
+### Advanced search
+GET http://localhost:8020/user/api/carinsurance/search?make=Toyota&model=Camry&year=2020&fuelType=PETROL
+
+### Create payment intent
+POST http://localhost:8020/user/api/carinsurance/1/payment
+Content-Type: application/json
+
+### Confirm payment
+POST http://localhost:8020/user/api/carinsurance/1/payment/confirm
+Content-Type: application/json
+
+### Search by make only
+GET http://localhost:8020/user/api/carinsurance/search?make=Toyota
+
+### Search by year only
+GET http://localhost:8020/user/api/carinsurance/search?year=2020
+
+### Search by fuel type only
+GET http://localhost:8020/user/api/carinsurance/search?fuelType=HYBRID

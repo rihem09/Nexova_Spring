@@ -1,0 +1,61 @@
+### Create a new company insurance
+POST http://localhost:8020/user/api/companyinsurance
+Content-Type: application/json
+
+{
+  "companyName": "Tech Solutions Inc",
+  "industrySector": "Technology",
+  "taxRegistrationNumber": "12345678",
+  "headOfficeAddress": "123 Tech Street, Silicon Valley",
+  "businessPremisesSize": 1000.50,
+  "numberOfEmployees": 100,
+  "valueOfProfessionalEquipment": 500000.00,
+  "premisesOccupationType": "OWNER",
+  "typeOfInsuranceRequired": "MULTI_RISK",
+  "presenceOfSecuritySystem": true,
+  "insuranceOptions": {
+    "FIRE_COVERAGE": true,
+    "THEFT_COVERAGE": true,
+    "LIABILITY_COVERAGE": true,
+    "NATURAL_DISASTER_COVERAGE": false
+  }
+}
+
+### Get all company insurances
+GET http://localhost:8020/user/api/companyinsurance
+
+### Get company insurance by ID
+GET http://localhost:8020/user/api/companyinsurance/1
+
+### Update company insurance
+PUT http://localhost:8020/user/api/companyinsurance/1
+Content-Type: application/json
+
+{
+  "companyName": "Tech Solutions Internationalize",
+  "industrySector": "Technology",
+  "headOfficeAddress": "456 Innovation Drive, Silicon Valley",
+  "numberOfEmployees": 150,
+  "valueOfProfessionalEquipment": 750000.00,
+  "presenceOfSecuritySystem": true
+}
+
+### Delete company insurance
+DELETE http://localhost:8020/user/api/companyinsurance/1
+
+### Search by sector
+GET http://localhost:8020/user/api/companyinsurance/search?sector=Technology
+
+### Search companies with security systems
+GET http://localhost:8020/user/api/companyinsurance/search?hasSecuritySystem=true
+
+### Search companies with minimum employees
+GET http://localhost:8020/user/api/companyinsurance/search?minEmployees=100
+
+### Create payment intent
+POST http://localhost:8020/user/api/companyinsurance/1/payment
+Content-Type: application/json
+
+### Confirm payment
+POST http://localhost:8020/user/api/companyinsurance/1/payment/confirm
+Content-Type: application/json
