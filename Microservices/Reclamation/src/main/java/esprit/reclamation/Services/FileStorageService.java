@@ -17,18 +17,17 @@ public class FileStorageService {
     private String uploadDir;
 
     public String storeFile(MultipartFile file) throws IOException {
-        Path uploadPath = Paths.get(uploadDir);
+        String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+        Path targetLocation = Paths.get("uploads").toAbsolutePath().normalize().resolve(filename);
 
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
-        }
+        // Créer le dossier s'il n'existe pas
+        Files.createDirectories(targetLocation.getParent());
 
-        String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
-        Path filePath = uploadPath.resolve(fileName);
-        Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
-        return fileName;
+        return filename; // ✅ On retourne uniquement le nom du fichier
     }
+
 
     public String getUploadDir() {
         return uploadDir;

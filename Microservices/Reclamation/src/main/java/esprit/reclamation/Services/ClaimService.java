@@ -7,6 +7,7 @@ import esprit.reclamation.Repositories.ClaimRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,5 +26,17 @@ public class ClaimService {
 
     public List<Claim> getClaimsByStatus(ClaimStatus status) {
         return claimRepository.findByStatus(status);
+    }
+
+    public void deleteClaim(Long id) {
+        claimRepository.deleteById(id);
+    }
+
+    public ClaimService(ClaimRepository claimRepository) {
+        this.claimRepository = claimRepository;
+    }
+
+    public List<Claim> getAllClaims(String description, ClaimStatus status, LocalDate claimDate) {
+        return claimRepository.filterClaims(description, status, claimDate);
     }
 }

@@ -1,5 +1,6 @@
 package esprit.reclamation.Entities;
-
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -9,12 +10,13 @@ public class Claim {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "La description ne peut pas être vide")
+    @Size(max = 255, message = "La description ne peut pas dépasser 255 caractères")
     private String description;
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255) default 'PENDING'")
     private ClaimStatus status = ClaimStatus.PENDING;
-
     private LocalDate claimDate = LocalDate.now();
 
     private String imagePath;
