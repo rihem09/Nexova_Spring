@@ -38,4 +38,17 @@ public class EventRestAPI {
     public void delEvent(@PathVariable long idEvent) {
         eventService.deleteEvent(idEvent);
     }
+
+//    @GetMapping("/show_event_by_id/{idEvent}")
+//    public ResponseEntity<Event> getEventById(@PathVariable long idEvent) {
+//        Event event = eventService.getEventById(idEvent);
+//        return ResponseEntity.ok(event);
+//    }
+
+
+
+    @GetMapping("/top-rated-event")
+    public Event getTopRatedEvent() {
+        return eventService.getTopRatedEvent();
+    }
 }

@@ -3,6 +3,7 @@ package com.example.event.Entities;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
 @Entity

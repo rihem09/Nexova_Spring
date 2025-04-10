@@ -1,6 +1,7 @@
 package com.example.event.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,7 +13,6 @@ import java.util.List;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,8 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private EventPass eventp;
 /*********************************************/
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     List<Feedback> feedbacks;
 /********************************************/
     public long getIdEvent() {
