@@ -4,10 +4,9 @@ package com.example.event.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+
 import lombok.experimental.FieldDefaults;
-import java.time.LocalDateTime;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private EventPass eventp;
 /*********************************************/
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     @JsonIgnore
     List<Feedback> feedbacks;
 /********************************************/
