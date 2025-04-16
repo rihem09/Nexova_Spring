@@ -11,7 +11,11 @@ import java.util.Optional;
 
 @Repository
 public interface EventRepo extends JpaRepository<Event, Long> {
+//    public Event findEventById(Long idEvent);
 
+    List<Event> findByTitleContainingIgnoreCase(String title);
+
+//    List<Event> findByTitle(String title);
 //    public Event findByidEvent(Long id);
 //    @Query("SELECT e FROM Event e " +
 //            "WHERE e IN (SELECT f.event FROM Feedback f GROUP BY f.event " +
@@ -19,6 +23,8 @@ public interface EventRepo extends JpaRepository<Event, Long> {
 //            "AND SIZE(e.feedbacks) > 0 " +
 //            "ORDER BY (SELECT AVG(f.rating) FROM Feedback f WHERE f.event = e) DESC")
 //    List<Event> findTopRatedEventsdsd();
+
+    List<Event> findByCluster(Integer cluster);
 
 
     @Query("SELECT e FROM Event e " +

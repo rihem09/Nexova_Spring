@@ -21,7 +21,14 @@ public class EventService {
     public Event updateEvent(Event event) {return eventRepo.save(event);}
     public void deleteEvent(long id) {eventRepo.deleteById(id);}
 
-//    public Event getEventById(Long id) {return eventRepo.findByidEvent(id);}
+//    public Event findByidEvent(Long idEvent) {
+//        return eventRepo.findByidEvent(idEvent);
+//    }
+
+    public List<Event> searchByTitle(String title) {
+        return eventRepo.findByTitleContainingIgnoreCase(title);
+    }
+
 
     public Event getTopRatedEvent() {
         List<Event> topRatedEvents = eventRepo.findTopRatedEvent();

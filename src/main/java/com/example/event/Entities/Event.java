@@ -22,6 +22,11 @@ public class Event {
     String duration;
     String venue;
 
+    @Column(name = "cluster")
+    Integer cluster;
+
+
+
     @Enumerated(EnumType.STRING)
     private EventPass eventp;
 /*********************************************/
@@ -92,5 +97,14 @@ public class Event {
 
     public void setFeedbacks(List<Feedback> feedbacks) {
         this.feedbacks = feedbacks;
+    }
+
+
+    public Integer getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(Integer cluster) {
+        this.cluster = cluster;
     }
 }
