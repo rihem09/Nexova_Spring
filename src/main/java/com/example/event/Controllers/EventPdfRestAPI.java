@@ -37,11 +37,12 @@ public class EventPdfRestAPI {
         Document document = new Document(PageSize.A4);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PdfWriter.getInstance(document, out);
+        Event topRatedEvent = eventService.getTopRatedEvent();
         document.open();
 
-        // ✅ Insérer le logo Maghrebia
+        // Logo Maghrebia
         try {
-            String logoPath = "src/main/resources/Static/logo1.png"; // chemin relatif
+            String logoPath = "src/main/resources/Static/logo1.png";
             Image logo = Image.getInstance(logoPath);
             logo.scaleToFit(100, 100);
             logo.setAlignment(Image.ALIGN_CENTER);
@@ -50,7 +51,7 @@ public class EventPdfRestAPI {
             System.out.println("❌ Logo not found: " + ex.getMessage());
         }
 
-        // 🌟 Titre principal
+        //  Titre principal
         Font titleFont = new Font(Font.HELVETICA, 18, Font.BOLD, Color.GREEN.darker());
 
 
@@ -58,6 +59,38 @@ public class EventPdfRestAPI {
         title.setAlignment(Element.ALIGN_CENTER);
         document.add(title);
 
+        //Top Rated Event
+        Font topTitleFont = new Font(Font.HELVETICA, 16, Font.BOLD, Color.BLUE);
+        Font topDetailFont = new Font(Font.HELVETICA, 12, Font.NORMAL, Color.BLACK);
+
+        Paragraph topEventTitle = new Paragraph("🏆 Top Rated Event", topTitleFont);
+        topEventTitle.setAlignment(Element.ALIGN_CENTER);
+        topEventTitle.setSpacingBefore(10f);
+        topEventTitle.setSpacingAfter(10f);
+        document.add(topEventTitle);
+
+
+        PdfPTable topTable = new PdfPTable(2);
+        topTable.setWidthPercentage(80);
+        topTable.setSpacingAfter(15f);
+        topTable.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+        topTable.addCell(new Phrase("Title:", topDetailFont));
+        topTable.addCell(new Phrase(topRatedEvent.getTitle(), topDetailFont));
+
+        topTable.addCell(new Phrase("Date:", topDetailFont));
+        topTable.addCell(new Phrase(topRatedEvent.getDateEvent().toString(), topDetailFont));
+
+        topTable.addCell(new Phrase("Venue:", topDetailFont));
+        topTable.addCell(new Phrase(topRatedEvent.getVenue(), topDetailFont));
+
+        topTable.addCell(new Phrase("Duration (hours):", topDetailFont));
+        topTable.addCell(new Phrase(topRatedEvent.getDuration(), topDetailFont));
+
+        topTable.addCell(new Phrase("Pass required:", topDetailFont));
+        topTable.addCell(new Phrase(topRatedEvent.getEventp().toString(), topDetailFont));
+
+        document.add(topTable);
         document.add(Chunk.NEWLINE); // saut de ligne
 
         // 🧾 Tableau
