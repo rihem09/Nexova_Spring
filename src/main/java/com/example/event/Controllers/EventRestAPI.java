@@ -34,7 +34,7 @@ public class EventRestAPI {
         return eventList;
     }
 
-    @PutMapping("/mod_event")
+    @PutMapping("/mod_event/{idEvent}")
     public Event modEvent(@RequestBody Event event) {
         Event ev= eventService.updateEvent(event);
         return ev;

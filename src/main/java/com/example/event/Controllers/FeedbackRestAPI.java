@@ -20,13 +20,13 @@ public class FeedbackRestAPI {
         Feedback fb=feedbackService.addFeedback(feedback);
         return fb;
     }
-/*
+
     @GetMapping("/show_fb")
     public List<Feedback> showFeedback() {
         List<Feedback> fbList = feedbackService.getAllFeedback();
         return fbList;
     }
-*/
+
     @PutMapping("/mod_fb")
     public Feedback modFeedback(@RequestBody Feedback feedback) {
         Feedback fb= feedbackService.updateFeedback(feedback);
